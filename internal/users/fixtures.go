@@ -8,10 +8,10 @@ import (
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/auth"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/client"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/genproto/users"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/client"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/genproto/users"
 	"google.golang.org/api/option"
 )
 

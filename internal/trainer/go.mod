@@ -1,10 +1,10 @@
-module github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer
+module github.com/truesch/wild-workouts-go-ddd-example/internal/trainer
 
 go 1.17
 
 require (
 	cloud.google.com/go/firestore v1.2.0
-	github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common v0.0.0-00010101000000-000000000000
+	github.com/truesch/wild-workouts-go-ddd-example/internal/common v0.0.0-00010101000000-000000000000
 	github.com/deepmap/oapi-codegen v1.9.0
 	github.com/go-chi/chi/v5 v5.0.5
 	github.com/go-chi/render v1.0.1
@@ -61,4 +61,4 @@ require (
 	honnef.co/go/tools v0.0.1-2020.1.3 // indirect
 )
 
-replace github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common => ../common/
+replace github.com/truesch/wild-workouts-go-ddd-example/internal/common => ../common/

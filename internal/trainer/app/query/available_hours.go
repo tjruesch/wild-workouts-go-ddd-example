@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/errors"
 	"github.com/sirupsen/logrus"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/errors"
 )
 
 type AvailableHoursHandler struct {

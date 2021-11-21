@@ -1,4 +1,4 @@
-module github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common
+module github.com/truesch/wild-workouts-go-ddd-example/internal/common
 
 go 1.17
 

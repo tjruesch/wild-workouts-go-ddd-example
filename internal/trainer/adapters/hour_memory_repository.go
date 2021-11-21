@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 )
 
 type MemoryHourRepository struct {

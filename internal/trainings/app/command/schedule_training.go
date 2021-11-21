@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/logs"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 	"github.com/pkg/errors"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/logs"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 )
 
 type ScheduleTraining struct {

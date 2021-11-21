@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"firebase.google.com/go/auth"
-	commonerrors "github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/errors"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/server/httperr"
+	commonerrors "github.com/truesch/wild-workouts-go-ddd-example/internal/common/errors"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/server/httperr"
 )
 
 type FirebaseHttpMiddleware struct {

@@ -3,12 +3,12 @@ package ports
 import (
 	"net/http"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/auth"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/server/httperr"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/query"
 	openapi_types "github.com/deepmap/oapi-codegen/pkg/types"
 	"github.com/go-chi/render"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/auth"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/server/httperr"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app/query"
 )
 
 type HttpServer struct {

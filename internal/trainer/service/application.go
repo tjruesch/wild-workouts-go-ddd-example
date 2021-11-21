@@ -5,11 +5,11 @@ import (
 	"os"
 
 	"cloud.google.com/go/firestore"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/adapters"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/command"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/query"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/adapters"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app/command"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app/query"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 )
 
 func NewApplication(ctx context.Context) app.Application {

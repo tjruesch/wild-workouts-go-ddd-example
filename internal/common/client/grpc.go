@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/genproto/users"
 	"github.com/pkg/errors"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/genproto/users"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

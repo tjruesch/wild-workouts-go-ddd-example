@@ -5,8 +5,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/query"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app/query"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 
 	"cloud.google.com/go/firestore"
 	"google.golang.org/api/iterator"

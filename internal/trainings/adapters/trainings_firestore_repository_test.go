@@ -8,14 +8,14 @@ import (
 	"time"
 
 	"cloud.google.com/go/firestore"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/adapters"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/app/query"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/adapters"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/app/query"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 )
 
 // todo - make tests parallel after fix of emulator: https://github.com/firebase/firebase-tools/issues/2452

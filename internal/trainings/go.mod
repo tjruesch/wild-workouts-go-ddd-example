@@ -1,10 +1,10 @@
-module github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings
+module github.com/truesch/wild-workouts-go-ddd-example/internal/trainings
 
 go 1.17
 
 require (
 	cloud.google.com/go v0.38.0
-	github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common v0.0.0-00010101000000-000000000000
+	github.com/truesch/wild-workouts-go-ddd-example/internal/common v0.0.0-00010101000000-000000000000
 	github.com/deepmap/oapi-codegen v1.9.0
 	github.com/go-chi/chi/v5 v5.0.5
 	github.com/go-chi/render v1.0.1
@@ -49,4 +49,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
 
-replace github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common => ../common/
+replace github.com/truesch/wild-workouts-go-ddd-example/internal/common => ../common/

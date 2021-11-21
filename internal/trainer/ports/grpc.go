@@ -5,11 +5,11 @@ import (
 	"errors"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

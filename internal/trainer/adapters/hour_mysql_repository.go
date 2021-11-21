@@ -6,11 +6,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 	"go.uber.org/multierr"
 )
 

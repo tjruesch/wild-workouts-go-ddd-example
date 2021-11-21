@@ -8,12 +8,12 @@ import (
 	"strings"
 
 	firebase "firebase.google.com/go"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/auth"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/logs"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 	"github.com/sirupsen/logrus"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/auth"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/logs"
 	"google.golang.org/api/option"
 )
 

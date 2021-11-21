@@ -5,11 +5,11 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/client"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/app/query"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/client"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app/query"
 )
 
 const daysToSet = 30

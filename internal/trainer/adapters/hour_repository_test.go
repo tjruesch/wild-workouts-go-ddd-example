@@ -9,12 +9,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/adapters"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/adapters"
 
 	"cloud.google.com/go/firestore"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/domain/hour"
 )
 
 func TestRepository(t *testing.T) {

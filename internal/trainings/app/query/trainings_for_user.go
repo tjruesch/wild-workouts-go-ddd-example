@@ -3,7 +3,7 @@ package query
 import (
 	"context"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/auth"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/auth"
 )
 
 type TrainingsForUserHandler struct {

@@ -7,7 +7,7 @@ import (
 	"github.com/golang/protobuf/ptypes"
 	"github.com/pkg/errors"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/genproto/trainer"
 )
 
 type TrainerGrpc struct {

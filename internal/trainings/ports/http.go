@@ -4,14 +4,14 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/auth"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/common/server/httperr"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/app"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/app/command"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/app/query"
-	"github.com/ThreeDotsLabs/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 	"github.com/go-chi/render"
 	"github.com/google/uuid"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/auth"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/server/httperr"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/app"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/app/command"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/app/query"
+	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainings/domain/training"
 )
 
 type HttpServer struct {
