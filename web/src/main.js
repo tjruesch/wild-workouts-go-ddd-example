@@ -14,6 +14,7 @@ import Calendar from './pages/Calendar'
 import ScheduleTraining from './pages/ScheduleTraining'
 import Login from './pages/Login'
 import SetSchedule from './pages/SetSchedule'
+import TestPage from './pages/TestPage'
 import {loadFirebaseConfig} from "./firebase";
 import {Auth, setApiClientsAuth} from "./repositories/auth";
 
@@ -76,6 +77,11 @@ const routes = [
         path: '/trainer/set-schedule',
         component: SetSchedule,
         name: 'setSchedule',
+    },
+    {
+        path: '/test',
+        component: TestPage,
+        name: 'testPage',
     },
 ]
 
