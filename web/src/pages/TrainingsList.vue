@@ -1,20 +1,20 @@
 <template>
     <app-layout>
         <div class="py-5 text-center">
-            <h2>Your trainings</h2>
-            <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form
-                group
-                has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+            <h2>Ihre Sprachkurse</h2>
+            <p class="lead">
+                Hier finden Sie eine Liste Ihrer anstehenden Kurse und Seminare.
+            </p>
         </div>
         <br><br>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">When</th>
-                <th scope="col">Notes</th>
-                <th scope="col" v-if="isTrainer">Attendee</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Wann</th>
+                <th scope="col">Anmerkungen</th>
+                <th scope="col" v-if="isTrainer">Teilnehmer</th>
+                <th scope="col">Kurs</th>
             </tr>
             </thead>
             <tbody>
@@ -41,13 +41,13 @@
                                  :to="{ name: 'proposeNewDate', params: { trainingID: training.uuid }}"
                                  v-if="training.moveRequiresAccept"
                     >
-                        Propose new time
+                        alternativen Termin anfragen
                     </router-link>
                     &nbsp;
                     <router-link tag="button" class="btn btn-primary" v-if="!training.moveRequiresAccept"
                                  :to="{ name: 'rescheduleTraining', params: { trainingID: training.uuid }}"
                     >
-                        Move
+                        Termin ändern
                     </router-link>
 
                     <div v-if="training.proposedTime">
@@ -56,14 +56,14 @@
                                 v-bind:data-training-uuid="training.uuid"
                                 v-if="userRole !== training.moveProposedBy"
                         >
-                            Approve reschedule
+                            Änderung bestätigen
                         </button>
                         &nbsp;
                         <button type="button" class="btn btn-warning" @click="rejectReschedule"
                                 v-bind:data-training-uuid="training.uuid"
                         >
-                            <span v-if="userRole !== training.moveProposedBy">Reject reschedule</span>
-                            <span v-if="userRole === training.moveProposedBy">Cancel reschedule request</span>
+                            <span v-if="userRole !== training.moveProposedBy">Änderung ablehnen</span>
+                            <span v-if="userRole === training.moveProposedBy">Anfrage zurückziehen</span>
                         </button>
                     </div>
                 </td>

@@ -95,16 +95,17 @@ steps:
   args: [install]
   dir: web
   waitFor: ['-']
-- id: openapi-js
-  name: openapitools/openapi-generator-cli:v4.3.0 
-  entrypoint: "./scripts/openapi-js.sh"
-  waitFor: ['-']
+# - id: openapi-js
+#   name: openapitools/openapi-generator-cli:v4.3.0 
+#   entrypoint: "./scripts/openapi-js.sh"
+#   waitFor: ['-']
 - id: web-build
   name: node:12.16.2
   entrypoint: yarn
   args: [build]
   dir: web
-  waitFor: [web-deps, openapi-js]
+#  waitFor: [web-deps, openapi-js]
+  waitFor: ['web-deps']
 - name: gcr.io/$PROJECT_ID/firebase
   args: ['deploy', '--project=$PROJECT_ID']
   dir: web

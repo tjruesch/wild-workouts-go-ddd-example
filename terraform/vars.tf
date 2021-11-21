@@ -8,5 +8,5 @@ variable "billing_account" {
 }
 
 variable "repository_name" {
-  default = "wild-workouts"
+  default = "training-app"
 }
