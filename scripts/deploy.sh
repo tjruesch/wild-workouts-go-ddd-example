@@ -5,5 +5,5 @@ readonly project_id="$3"
 
 gcloud run deploy "$service-$server_to_run" \
     --image "gcr.io/$project_id/$service" \
-    --region europe-west1 \
+    --region europe-west3 \
     --platform managed

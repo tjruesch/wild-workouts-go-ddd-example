@@ -2,7 +2,7 @@
 readonly env_prefix=TF_VAR_
 readonly example_file=.env.example
 readonly target_file=.env
-readonly default_region=europe-west1
+readonly default_region=europe-west3
 readonly default_firebase_location=europe-west
 
 answer=""
