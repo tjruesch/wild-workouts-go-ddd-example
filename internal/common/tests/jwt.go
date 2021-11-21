@@ -10,7 +10,7 @@ import (
 func FakeAttendeeJWT(t *testing.T, userID string) string {
 	return fakeJWT(t, jwt.MapClaims{
 		"user_uuid": userID,
-		"email":     "attendee@threedots.tech",
+		"email":     "attendee@getranet.de",
 		"role":      "attendee",
 		"name":      "Attendee",
 	})
@@ -19,7 +19,7 @@ func FakeAttendeeJWT(t *testing.T, userID string) string {
 func FakeTrainerJWT(t *testing.T, userID string) string {
 	return fakeJWT(t, jwt.MapClaims{
 		"user_uuid": userID,
-		"email":     "trainer@threedots.tech",
+		"email":     "trainer@getranet.de",
 		"role":      "trainer",
 		"name":      "Trainer",
 	})
