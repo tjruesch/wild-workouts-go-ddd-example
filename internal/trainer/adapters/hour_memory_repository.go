@@ -37,7 +37,7 @@ func (m MemoryHourRepository) GetHour(_ context.Context, hourTime time.Time) (*h
 func (m MemoryHourRepository) getOrCreateHour(hourTime time.Time) (*hour.Hour, error) {
 	currentHour, ok := m.hours[hourTime]
 	if !ok {
-		return m.hourFactory.NewNotAvailableHour(hourTime)
+		return m.hourFactory.NewNotAvailableHour(hourTime, "", "")
 	}
 
 	// we don't store hours as pointers, but as values

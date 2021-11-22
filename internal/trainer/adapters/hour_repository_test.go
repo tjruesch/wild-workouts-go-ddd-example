@@ -142,7 +142,7 @@ func testUpdateHour_parallel(t *testing.T, repository hour.Repository) {
 
 	// we are adding available hour
 	err := repository.UpdateHour(ctx, hourTime, func(h *hour.Hour) (*hour.Hour, error) {
-		if err := h.MakeAvailable(); err != nil {
+		if err := h.MakeAvailable("Test Topic", ""); err != nil {
 			return nil, err
 		}
 		return h, nil
@@ -213,7 +213,7 @@ func testUpdateHour_rollback(t *testing.T, repository hour.Repository) {
 	hourTime := newValidHourTime()
 
 	err := repository.UpdateHour(ctx, hourTime, func(h *hour.Hour) (*hour.Hour, error) {
-		require.NoError(t, h.MakeAvailable())
+		require.NoError(t, h.MakeAvailable("Test Topic", ""))
 		return h, nil
 	})
 
@@ -311,8 +311,10 @@ func newMySQLRepository(t *testing.T) *adapters.MySQLHourRepository {
 
 func newValidAvailableHour(t *testing.T) *hour.Hour {
 	hourTime := newValidHourTime()
+	topic := "Test Topic"
+	tags := "test,language"
 
-	hour, err := testHourFactory.NewAvailableHour(hourTime)
+	hour, err := testHourFactory.NewAvailableHour(hourTime, topic, tags)
 	require.NoError(t, err)
 
 	return hour

@@ -120,7 +120,7 @@ func (f FirestoreHourRepository) domainHourFromDateDTO(date DateModel, hourTime 
 	firebaseHour, found := findHourInDateDTO(date, hourTime)
 	if !found {
 		// in reality this date exists, even if it's not persisted
-		return f.hourFactory.NewNotAvailableHour(hourTime)
+		return f.hourFactory.NewNotAvailableHour(hourTime, "", "")
 	}
 
 	availability, err := mapAvailabilityFromDTO(firebaseHour)
@@ -128,7 +128,7 @@ func (f FirestoreHourRepository) domainHourFromDateDTO(date DateModel, hourTime 
 		return nil, err
 	}
 
-	return f.hourFactory.UnmarshalHourFromDatabase(firebaseHour.Hour.Local(), availability)
+	return f.hourFactory.UnmarshalHourFromDatabase(firebaseHour.Hour.Local(), availability, firebaseHour.Topic, firebaseHour.Tags)
 }
 
 // for now we are keeping backward comparability, because of that it's a bit messy and overcomplicated
@@ -183,6 +183,8 @@ func domainHourToDTO(updatedHour *hour.Hour) HourModel {
 		Available:            updatedHour.IsAvailable(),
 		HasTrainingScheduled: updatedHour.HasTrainingScheduled(),
 		Hour:                 updatedHour.Time(),
+		Topic:                updatedHour.Topic(),
+		Tags:                 updatedHour.Tags(),
 	}
 }
 

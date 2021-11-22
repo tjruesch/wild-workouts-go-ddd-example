@@ -18,6 +18,8 @@ type mysqlHour struct {
 	ID           string    `db:"id"`
 	Hour         time.Time `db:"hour"`
 	Availability string    `db:"availability"`
+	Topic        string    `db:"topic"`
+	Tags         string    `db:"tags"`
 }
 
 type MySQLHourRepository struct {
@@ -61,7 +63,7 @@ func (m MySQLHourRepository) getOrCreateHour(
 	err := db.GetContext(ctx, &dbHour, query, hourTime.UTC())
 	if errors.Is(err, sql.ErrNoRows) {
 		// in reality this date exists, even if it's not persisted
-		return m.hourFactory.NewNotAvailableHour(hourTime)
+		return m.hourFactory.NewNotAvailableHour(hourTime, "", "")
 	} else if err != nil {
 		return nil, errors.Wrap(err, "unable to get hour from db")
 	}
@@ -71,7 +73,7 @@ func (m MySQLHourRepository) getOrCreateHour(
 		return nil, err
 	}
 
-	domainHour, err := m.hourFactory.UnmarshalHourFromDatabase(dbHour.Hour.Local(), availability)
+	domainHour, err := m.hourFactory.UnmarshalHourFromDatabase(dbHour.Hour.Local(), availability, dbHour.Topic, dbHour.Tags)
 	if err != nil {
 		return nil, err
 	}
