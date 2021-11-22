@@ -12,6 +12,7 @@ service TrainerService {
   rpc ScheduleTraining(UpdateHourRequest) returns (google.protobuf.Empty) {}
   rpc CancelTraining(UpdateHourRequest) returns (google.protobuf.Empty) {}
   rpc MakeHourAvailable(UpdateHourRequest) returns (google.protobuf.Empty) {}
+  rpc GetTopic(GetTopicRequest) returns (GetTopicResponse) {}
 }
 
 message IsHourAvailableRequest {
@@ -24,4 +25,14 @@ message IsHourAvailableResponse {
 
 message UpdateHourRequest {
   google.protobuf.Timestamp time = 1;
+  string topic = 2;
+  string tags = 3;
+}
+
+message GetTopicRequest {
+  google.protobuf.Timestamp time = 1;
+}
+
+message GetTopicResponse {
+  string topic = 1;
 }

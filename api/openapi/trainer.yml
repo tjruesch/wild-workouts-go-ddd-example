@@ -121,7 +121,7 @@ components:
 
     Hour:
       type: object
-      required: [hour, available, hasTrainingScheduled]
+      required: [hour, available, hasTrainingScheduled, topic, tags]
       properties:
         hour:
           type: string
@@ -130,16 +130,28 @@ components:
           type: boolean
         hasTrainingScheduled:
           type: boolean
+        topic:
+          type: string
+        tags:
+          type: string
 
     HourUpdate:
       type: object
-      required: [hours]
+      required: [hours, topic, tags]
       properties:
         hours:
           type: array
           items:
             type: string
             format: date-time
+        topic:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
 
     Error:
       type: object
