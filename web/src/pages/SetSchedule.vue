@@ -99,7 +99,7 @@
 
                     for (let idx in day.hours) {
                         let d = day.hours[idx].hour;
-                        updates.push([formatDate(d), formatHour(d)])
+                        updates.push([formatDate(d), formatHour(d), "Front-End-List", ""])
                     }
 
                     setHourAvailability(updates, true, function () {
@@ -122,8 +122,8 @@
             },
             toggleHour(event, hour) {
                 let self = this
-
-                let updates = [[event.target.getAttribute('data-date'), event.target.getAttribute('data-hour')]];
+                // TODO: get topic and tag from user
+                let updates = [[event.target.getAttribute('data-date'), event.target.getAttribute('data-hour'), "Front-End Topic", "english,business"]];
                 setHourAvailability(
                     updates,
                     event.target.checked,

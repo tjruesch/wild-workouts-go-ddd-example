@@ -25,10 +25,12 @@ class Hour {
      * @param hour {Date} 
      * @param available {Boolean} 
      * @param hasTrainingScheduled {Boolean} 
+     * @param topic {String} 
+     * @param tags {String} 
      */
-    constructor(hour, available, hasTrainingScheduled) { 
+    constructor(hour, available, hasTrainingScheduled, topic, tags) { 
         
-        Hour.initialize(this, hour, available, hasTrainingScheduled);
+        Hour.initialize(this, hour, available, hasTrainingScheduled, topic, tags);
     }
 
     /**
@@ -36,10 +38,12 @@ class Hour {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hour, available, hasTrainingScheduled) { 
+    static initialize(obj, hour, available, hasTrainingScheduled, topic, tags) { 
         obj['hour'] = hour;
         obj['available'] = available;
         obj['hasTrainingScheduled'] = hasTrainingScheduled;
+        obj['topic'] = topic;
+        obj['tags'] = tags;
     }
 
     /**
@@ -62,6 +66,12 @@ class Hour {
             if (data.hasOwnProperty('hasTrainingScheduled')) {
                 obj['hasTrainingScheduled'] = ApiClient.convertToType(data['hasTrainingScheduled'], 'Boolean');
             }
+            if (data.hasOwnProperty('topic')) {
+                obj['topic'] = ApiClient.convertToType(data['topic'], 'String');
+            }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], 'String');
+            }
         }
         return obj;
     }
@@ -83,6 +93,16 @@ Hour.prototype['available'] = undefined;
  * @member {Boolean} hasTrainingScheduled
  */
 Hour.prototype['hasTrainingScheduled'] = undefined;
+
+/**
+ * @member {String} topic
+ */
+Hour.prototype['topic'] = undefined;
+
+/**
+ * @member {String} tags
+ */
+Hour.prototype['tags'] = undefined;
 
 
 

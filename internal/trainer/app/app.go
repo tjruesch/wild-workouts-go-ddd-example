@@ -16,6 +16,8 @@ type Commands struct {
 
 	MakeHoursAvailable   command.MakeHoursAvailableHandler
 	MakeHoursUnavailable command.MakeHoursUnavailableHandler
+
+	GetTopic command.GetTopicHandler
 }
 
 type Queries struct {

@@ -10,6 +10,8 @@ type Training struct {
 	Time  time.Time
 	Notes string
 
+	Topic string
+
 	ProposedTime   *time.Time
 	MoveProposedBy *string
 

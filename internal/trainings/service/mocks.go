@@ -20,6 +20,10 @@ func (t TrainerServiceMock) MoveTraining(ctx context.Context, newTime time.Time,
 	return nil
 }
 
+func (t TrainerServiceMock) GetTopic(ctx context.Context, trainingTime time.Time) (string, error) {
+	return "Test", nil
+}
+
 type UserServiceMock struct {
 }
 

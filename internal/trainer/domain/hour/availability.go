@@ -56,6 +56,14 @@ func (h Hour) IsAvailable() bool {
 	return h.availability == Available
 }
 
+func (h *Hour) Topic() string {
+	return h.topic
+}
+
+func (h *Hour) Tags() string {
+	return h.tags
+}
+
 func (h Hour) HasTrainingScheduled() bool {
 	return h.availability == TrainingScheduled
 }
@@ -69,11 +77,12 @@ func (h *Hour) MakeNotAvailable() error {
 	return nil
 }
 
-func (h *Hour) MakeAvailable() error {
+func (h *Hour) MakeAvailable(topic string, tags string) error {
 	if h.HasTrainingScheduled() {
 		return ErrTrainingScheduled
 	}
-
+	h.topic = topic
+	h.tags = tags
 	h.availability = Available
 	return nil
 }

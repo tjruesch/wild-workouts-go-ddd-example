@@ -26,13 +26,14 @@ class Training {
      * @param user {String} 
      * @param userUuid {String} 
      * @param notes {String} 
+     * @param topic {String} 
      * @param time {Date} 
      * @param canBeCancelled {Boolean} 
      * @param moveRequiresAccept {Boolean} 
      */
-    constructor(uuid, user, userUuid, notes, time, canBeCancelled, moveRequiresAccept) { 
+    constructor(uuid, user, userUuid, notes, topic, time, canBeCancelled, moveRequiresAccept) { 
         
-        Training.initialize(this, uuid, user, userUuid, notes, time, canBeCancelled, moveRequiresAccept);
+        Training.initialize(this, uuid, user, userUuid, notes, topic, time, canBeCancelled, moveRequiresAccept);
     }
 
     /**
@@ -40,11 +41,12 @@ class Training {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, uuid, user, userUuid, notes, time, canBeCancelled, moveRequiresAccept) { 
+    static initialize(obj, uuid, user, userUuid, notes, topic, time, canBeCancelled, moveRequiresAccept) { 
         obj['uuid'] = uuid;
         obj['user'] = user;
         obj['userUuid'] = userUuid;
         obj['notes'] = notes;
+        obj['topic'] = topic;
         obj['time'] = time;
         obj['canBeCancelled'] = canBeCancelled;
         obj['moveRequiresAccept'] = moveRequiresAccept;
@@ -72,6 +74,9 @@ class Training {
             }
             if (data.hasOwnProperty('notes')) {
                 obj['notes'] = ApiClient.convertToType(data['notes'], 'String');
+            }
+            if (data.hasOwnProperty('topic')) {
+                obj['topic'] = ApiClient.convertToType(data['topic'], 'String');
             }
             if (data.hasOwnProperty('time')) {
                 obj['time'] = ApiClient.convertToType(data['time'], 'Date');
@@ -114,6 +119,11 @@ Training.prototype['userUuid'] = undefined;
  * @member {String} notes
  */
 Training.prototype['notes'] = undefined;
+
+/**
+ * @member {String} topic
+ */
+Training.prototype['topic'] = undefined;
 
 /**
  * @member {Date} time

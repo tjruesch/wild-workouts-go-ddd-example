@@ -24,11 +24,17 @@ func NewGrpcServer(application app.Application) GrpcServer {
 
 func (g GrpcServer) MakeHourAvailable(ctx context.Context, request *trainer.UpdateHourRequest) (*empty.Empty, error) {
 	trainingTime, err := protoTimestampToTime(request.Time)
+
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, "unable to parse time")
 	}
 
-	if err := g.app.Commands.MakeHoursAvailable.Handle(ctx, []time.Time{trainingTime}); err != nil {
+	if err := g.app.Commands.MakeHoursAvailable.Handle(
+		ctx,
+		[]time.Time{trainingTime},
+		[]string{request.Topic},
+		[]string{request.Tags},
+	); err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
 
@@ -73,6 +79,20 @@ func (g GrpcServer) IsHourAvailable(ctx context.Context, request *trainer.IsHour
 	}
 
 	return &trainer.IsHourAvailableResponse{IsAvailable: isAvailable}, nil
+}
+
+func (g GrpcServer) GetTopic(ctx context.Context, request *trainer.GetTopicRequest) (*trainer.GetTopicResponse, error) {
+	trainingTime, err := protoTimestampToTime(request.Time)
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, "unable to parse time")
+	}
+
+	topic, err := g.app.Commands.GetTopic.Handle(ctx, trainingTime)
+	if err != nil {
+		return nil, status.Error(codes.Internal, err.Error())
+	}
+
+	return &trainer.GetTopicResponse{Topic: topic}, nil
 }
 
 func protoTimestampToTime(timestamp *timestamp.Timestamp) (time.Time, error) {

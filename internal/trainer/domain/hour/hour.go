@@ -9,7 +9,9 @@ import (
 )
 
 type Hour struct {
-	hour time.Time
+	hour  time.Time
+	topic string
+	tags  string
 
 	availability Availability
 }
@@ -95,18 +97,24 @@ func (f Factory) IsZero() bool {
 	return f == Factory{}
 }
 
-func (f Factory) NewAvailableHour(hour time.Time) (*Hour, error) {
+func (f Factory) NewAvailableHour(hour time.Time, topic string, tags string) (*Hour, error) {
 	if err := f.validateTime(hour); err != nil {
 		return nil, err
+	}
+
+	if topic == "" {
+		return &Hour{}, errors.New("empty topic")
 	}
 
 	return &Hour{
 		hour:         hour,
 		availability: Available,
+		topic:        topic,
+		tags:         tags,
 	}, nil
 }
 
-func (f Factory) NewNotAvailableHour(hour time.Time) (*Hour, error) {
+func (f Factory) NewNotAvailableHour(hour time.Time, topic string, tags string) (*Hour, error) {
 	if err := f.validateTime(hour); err != nil {
 		return nil, err
 	}
@@ -114,6 +122,8 @@ func (f Factory) NewNotAvailableHour(hour time.Time) (*Hour, error) {
 	return &Hour{
 		hour:         hour,
 		availability: NotAvailable,
+		topic:        "",
+		tags:         "",
 	}, nil
 }
 
@@ -121,7 +131,7 @@ func (f Factory) NewNotAvailableHour(hour time.Time) (*Hour, error) {
 //
 // It should be used only for unmarshalling from the database!
 // You can't use UnmarshalHourFromDatabase as constructor - It may put domain into the invalid state!
-func (f Factory) UnmarshalHourFromDatabase(hour time.Time, availability Availability) (*Hour, error) {
+func (f Factory) UnmarshalHourFromDatabase(hour time.Time, availability Availability, topic string, tags string) (*Hour, error) {
 	if err := f.validateTime(hour); err != nil {
 		return nil, err
 	}
@@ -133,6 +143,8 @@ func (f Factory) UnmarshalHourFromDatabase(hour time.Time, availability Availabi
 	return &Hour{
 		hour:         hour,
 		availability: availability,
+		topic:        topic,
+		tags:         tags,
 	}, nil
 }
 

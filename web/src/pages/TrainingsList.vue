@@ -15,6 +15,7 @@
                 <th scope="col">Anmerkungen</th>
                 <th scope="col" v-if="isTrainer">Teilnehmer</th>
                 <th scope="col">Kurs</th>
+                <th scope="col">Thema</th>
             </tr>
             </thead>
             <tbody>
@@ -25,8 +26,8 @@
                     <span v-bind:class="{'old-date': training.proposedTime}">{{ formatDateTime(training.time) }}</span>
                     <span v-if="training.proposedTime" v-bind:title="'proposed by ' + training.moveProposedBy"><br>{{ formatDateTime(training.proposedTime) }}</span>
                 </td>
-                <th>{{ training.notes }}</th>
-                <th v-if="isTrainer">{{ training.user }}</th>
+                <td>{{ training.notes }}</td>
+                <td v-if="isTrainer">{{ training.user }}</td>
                 <td>
                     <button type="button"
                             v-bind:class="training.canBeCancelled ? 'btn btn-warning' : 'btn btn-danger'"
@@ -67,6 +68,7 @@
                         </button>
                     </div>
                 </td>
+                <td>{{ training.topic }}</td>
             </tr>
             </tbody>
         </table>

@@ -2,6 +2,7 @@ package command
 
 import (
 	"context"
+	"log"
 	"time"
 
 	"github.com/pkg/errors"
@@ -44,7 +45,14 @@ func (h ScheduleTrainingHandler) Handle(ctx context.Context, cmd ScheduleTrainin
 		logs.LogCommandExecution("ScheduleTraining", cmd, err)
 	}()
 
-	tr, err := training.NewTraining(cmd.TrainingUUID, cmd.UserUUID, cmd.UserName, cmd.TrainingTime)
+	// TODO:
+	topic, err := h.trainerService.GetTopic(ctx, cmd.TrainingTime)
+	if err != nil {
+		return errors.Wrap(err, "unable to schedule training")
+	}
+	log.Printf("Returned topic: %s", topic)
+
+	tr, err := training.NewTraining(cmd.TrainingUUID, cmd.UserUUID, cmd.UserName, cmd.TrainingTime, topic)
 	if err != nil {
 		return err
 	}

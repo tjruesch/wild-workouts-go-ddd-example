@@ -18,7 +18,7 @@ func TestNewTraining(t *testing.T) {
 	userName := "user name"
 	trainingTime := time.Now().Round(time.Hour)
 
-	tr, err := training.NewTraining(trainingUUID, userUUID, userName, trainingTime)
+	tr, err := training.NewTraining(trainingUUID, userUUID, userName, trainingTime, "Topic")
 	require.NoError(t, err)
 
 	assert.Equal(t, trainingUUID, tr.UUID())
@@ -34,16 +34,16 @@ func TestNewTraining_invalid(t *testing.T) {
 	trainingTime := time.Now().Round(time.Hour)
 	userName := "user name"
 
-	_, err := training.NewTraining("", userUUID, userName, trainingTime)
+	_, err := training.NewTraining("", userUUID, userName, trainingTime, "Topic")
 	assert.Error(t, err)
 
-	_, err = training.NewTraining(trainingUUID, "", userName, trainingTime)
+	_, err = training.NewTraining(trainingUUID, "", userName, trainingTime, "Topic")
 	assert.Error(t, err)
 
-	_, err = training.NewTraining(trainingUUID, userUUID, userName, time.Time{})
+	_, err = training.NewTraining(trainingUUID, userUUID, userName, time.Time{}, "Topic")
 	assert.Error(t, err)
 
-	_, err = training.NewTraining(trainingUUID, userUUID, "", time.Time{})
+	_, err = training.NewTraining(trainingUUID, userUUID, "", time.Time{}, "Topic")
 	assert.Error(t, err)
 }
 
@@ -81,6 +81,7 @@ func newExampleTraining(t *testing.T) *training.Training {
 		uuid.New().String(),
 		"user name",
 		time.Now().AddDate(0, 0, 5).Round(time.Hour),
+		"Topic",
 	)
 	require.NoError(t, err)
 
@@ -93,6 +94,7 @@ func newExampleTrainingWithTime(t *testing.T, trainingTime time.Time) *training.
 		uuid.New().String(),
 		"user name",
 		trainingTime,
+		"Topic",
 	)
 	require.NoError(t, err)
 

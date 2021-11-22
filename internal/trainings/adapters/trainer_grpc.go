@@ -2,6 +2,7 @@ package adapters
 
 import (
 	"context"
+	"log"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -60,4 +61,19 @@ func (s TrainerGrpc) MoveTraining(
 	}
 
 	return nil
+}
+
+func (s TrainerGrpc) GetTopic(ctx context.Context, trainingTime time.Time) (string, error) {
+	timestamp, err := ptypes.TimestampProto(trainingTime)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to convert time to proto timestamp")
+	}
+
+	topicResponse, err := s.client.GetTopic(ctx, &trainer.GetTopicRequest{
+		Time: timestamp,
+	})
+
+	log.Printf("Response: %v, Topic: %s", topicResponse, topicResponse.Topic)
+
+	return topicResponse.GetTopic(), err
 }

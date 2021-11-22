@@ -12,6 +12,7 @@ type UserService interface {
 type TrainerService interface {
 	ScheduleTraining(ctx context.Context, trainingTime time.Time) error
 	CancelTraining(ctx context.Context, trainingTime time.Time) error
+	GetTopic(ctx context.Context, trainingTime time.Time) (string, error)
 
 	MoveTraining(
 		ctx context.Context,

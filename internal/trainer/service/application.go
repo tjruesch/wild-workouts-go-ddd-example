@@ -39,6 +39,7 @@ func NewApplication(ctx context.Context) app.Application {
 			ScheduleTraining:     command.NewScheduleTrainingHandler(hourRepository),
 			MakeHoursAvailable:   command.NewMakeHoursAvailableHandler(hourRepository),
 			MakeHoursUnavailable: command.NewMakeHoursUnavailableHandler(hourRepository),
+			GetTopic:             command.NewGetTopicHandler(hourRepository),
 		},
 		Queries: app.Queries{
 			HourAvailability:      query.NewHourAvailabilityHandler(hourRepository),

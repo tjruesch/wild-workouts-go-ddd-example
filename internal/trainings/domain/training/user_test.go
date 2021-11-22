@@ -35,6 +35,7 @@ func TestIsUserAllowedToSeeTraining(t *testing.T) {
 					attendee1.UUID(),
 					"user name",
 					time.Now(),
+					"Topic",
 				)
 				require.NoError(t, err)
 
@@ -51,6 +52,7 @@ func TestIsUserAllowedToSeeTraining(t *testing.T) {
 					attendee1.UUID(),
 					"user name",
 					time.Now(),
+					"Topic",
 				)
 				require.NoError(t, err)
 
@@ -67,6 +69,7 @@ func TestIsUserAllowedToSeeTraining(t *testing.T) {
 					attendee1.UUID(),
 					"user name",
 					time.Now(),
+					"Topic",
 				)
 				require.NoError(t, err)
 

@@ -17,7 +17,7 @@ var testHourFactory = hour.MustNewFactory(hour.FactoryConfig{
 
 func TestNewAvailableHour(t *testing.T) {
 	t.Parallel()
-	h, err := testHourFactory.NewAvailableHour(validTrainingHour())
+	h, err := testHourFactory.NewAvailableHour(validTrainingHour(), "Test Topic", "")
 	require.NoError(t, err)
 
 	assert.True(t, h.IsAvailable())
@@ -27,7 +27,7 @@ func TestNewAvailableHour_not_full_hour(t *testing.T) {
 	t.Parallel()
 	constructorTime := trainingHourWithMinutes(13)
 
-	_, err := testHourFactory.NewAvailableHour(constructorTime)
+	_, err := testHourFactory.NewAvailableHour(constructorTime, "Test Topic", "")
 	assert.Equal(t, hour.ErrNotFullHour, err)
 }
 
@@ -43,7 +43,7 @@ func TestNewAvailableHour_too_distant_date(t *testing.T) {
 
 	constructorTime := time.Now().Truncate(time.Hour*24).AddDate(0, 0, maxWeeksInFuture*7+1)
 
-	_, err := factory.NewAvailableHour(constructorTime)
+	_, err := factory.NewAvailableHour(constructorTime, "Test Topic", "")
 	assert.Equal(
 		t,
 		hour.TooDistantDateError{
@@ -57,11 +57,11 @@ func TestNewAvailableHour_too_distant_date(t *testing.T) {
 func TestNewAvailableHour_past_date(t *testing.T) {
 	t.Parallel()
 	pastHour := time.Now().Truncate(time.Hour).Add(-time.Hour)
-	_, err := testHourFactory.NewAvailableHour(pastHour)
+	_, err := testHourFactory.NewAvailableHour(pastHour, "Test Topic", "")
 	assert.Equal(t, hour.ErrPastHour, err)
 
 	currentHour := time.Now().Truncate(time.Hour)
-	_, err = testHourFactory.NewAvailableHour(currentHour)
+	_, err = testHourFactory.NewAvailableHour(currentHour, "Test Topic", "")
 	assert.Equal(t, hour.ErrPastHour, err)
 }
 
@@ -82,7 +82,7 @@ func TestNewAvailableHour_too_early_hour(t *testing.T) {
 		time.UTC,
 	)
 
-	_, err := factory.NewAvailableHour(tooEarlyHour)
+	_, err := factory.NewAvailableHour(tooEarlyHour, "Test Topic", "")
 	assert.Equal(
 		t,
 		hour.TooEarlyHourError{
@@ -110,7 +110,7 @@ func TestNewAvailableHour_too_late_hour(t *testing.T) {
 		time.UTC,
 	)
 
-	_, err := factory.NewAvailableHour(tooEarlyHour)
+	_, err := factory.NewAvailableHour(tooEarlyHour, "Test Topic", "")
 	assert.Equal(
 		t,
 		hour.TooLateHourError{
@@ -121,11 +121,20 @@ func TestNewAvailableHour_too_late_hour(t *testing.T) {
 	)
 }
 
+func TestNewAvailableHour_empty_topic(t *testing.T) {
+	t.Parallel()
+	expectedTime := validTrainingHour()
+
+	_, err := testHourFactory.NewAvailableHour(expectedTime, "", "")
+	assert.EqualError(t, err, "empty topic")
+
+}
+
 func TestHour_Time(t *testing.T) {
 	t.Parallel()
 	expectedTime := validTrainingHour()
 
-	h, err := testHourFactory.NewAvailableHour(expectedTime)
+	h, err := testHourFactory.NewAvailableHour(expectedTime, "Test Topic", "")
 	require.NoError(t, err)
 
 	assert.Equal(t, expectedTime, h.Time())
@@ -135,7 +144,7 @@ func TestUnmarshalHourFromDatabase(t *testing.T) {
 	t.Parallel()
 	trainingTime := validTrainingHour()
 
-	h, err := testHourFactory.UnmarshalHourFromDatabase(trainingTime, hour.TrainingScheduled)
+	h, err := testHourFactory.UnmarshalHourFromDatabase(trainingTime, hour.TrainingScheduled, "Test Topic", "")
 	require.NoError(t, err)
 
 	assert.Equal(t, trainingTime, h.Time())

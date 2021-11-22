@@ -245,6 +245,7 @@ func TestTrainingsFirestoreRepository_FindTrainingsForUser(t *testing.T) {
 		userUUID,
 		"User",
 		time.Now(),
+		"Test",
 	)
 	err = repo.AddTraining(ctx, tr1)
 	require.NoError(t, err)
@@ -254,6 +255,7 @@ func TestTrainingsFirestoreRepository_FindTrainingsForUser(t *testing.T) {
 		userUUID,
 		"User",
 		time.Now(),
+		"Test",
 	)
 	err = repo.AddTraining(ctx, tr2)
 	require.NoError(t, err)
@@ -264,6 +266,7 @@ func TestTrainingsFirestoreRepository_FindTrainingsForUser(t *testing.T) {
 		userUUID,
 		"User",
 		time.Now(),
+		"Test",
 	)
 	err = canceledTraining.Cancel()
 	require.NoError(t, err)
@@ -305,6 +308,7 @@ func newExampleTraining(t *testing.T) *training.Training {
 		uuid.New().String(),
 		"User",
 		newRandomTrainingTime(),
+		"Test",
 	)
 	require.NoError(t, err)
 
@@ -318,6 +322,7 @@ func newCanceledTraining(t *testing.T) *training.Training {
 		uuid.New().String(),
 		"User",
 		newRandomTrainingTime(),
+		"Test",
 	)
 	require.NoError(t, err)
 

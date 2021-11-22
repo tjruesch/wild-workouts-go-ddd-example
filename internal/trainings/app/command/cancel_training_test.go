@@ -110,6 +110,7 @@ func createExampleTraining(t *testing.T, requestingUserID string, trainingTime t
 		requestingUserID,
 		"foo",
 		trainingTime,
+		"Test",
 	)
 	require.NoError(t, err)
 
@@ -184,6 +185,10 @@ func (t *trainerServiceMock) ScheduleTraining(ctx context.Context, trainingTime 
 func (t *trainerServiceMock) CancelTraining(ctx context.Context, trainingTime time.Time) error {
 	t.trainingsCancelled = append(t.trainingsCancelled, trainingTime)
 	return nil
+}
+
+func (t *trainerServiceMock) GetTopic(ctx context.Context, trainingTime time.Time) (string, error) {
+	return "Test Topic", nil
 }
 
 type balanceUpdate struct {

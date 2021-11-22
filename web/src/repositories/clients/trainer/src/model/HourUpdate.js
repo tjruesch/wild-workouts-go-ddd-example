@@ -23,10 +23,12 @@ class HourUpdate {
      * Constructs a new <code>HourUpdate</code>.
      * @alias module:model/HourUpdate
      * @param hours {Array.<Date>} 
+     * @param topic {Array.<String>} 
+     * @param tags {Array.<String>} 
      */
-    constructor(hours) { 
+    constructor(hours, topic, tags) { 
         
-        HourUpdate.initialize(this, hours);
+        HourUpdate.initialize(this, hours, topic, tags);
     }
 
     /**
@@ -34,8 +36,10 @@ class HourUpdate {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, hours) { 
+    static initialize(obj, hours, topic, tags) { 
         obj['hours'] = hours;
+        obj['topic'] = topic;
+        obj['tags'] = tags;
     }
 
     /**
@@ -52,6 +56,12 @@ class HourUpdate {
             if (data.hasOwnProperty('hours')) {
                 obj['hours'] = ApiClient.convertToType(data['hours'], ['Date']);
             }
+            if (data.hasOwnProperty('topic')) {
+                obj['topic'] = ApiClient.convertToType(data['topic'], ['String']);
+            }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], ['String']);
+            }
         }
         return obj;
     }
@@ -63,6 +73,16 @@ class HourUpdate {
  * @member {Array.<Date>} hours
  */
 HourUpdate.prototype['hours'] = undefined;
+
+/**
+ * @member {Array.<String>} topic
+ */
+HourUpdate.prototype['topic'] = undefined;
+
+/**
+ * @member {Array.<String>} tags
+ */
+HourUpdate.prototype['tags'] = undefined;
 
 
 

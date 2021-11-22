@@ -78,7 +78,12 @@ func (h HttpServer) MakeHourAvailable(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = h.app.Commands.MakeHoursAvailable.Handle(r.Context(), hourUpdate.Hours)
+	err = h.app.Commands.MakeHoursAvailable.Handle(
+		r.Context(),
+		hourUpdate.Hours,
+		hourUpdate.Topic,
+		hourUpdate.Tags,
+	)
 	if err != nil {
 		httperr.RespondWithSlugError(err, w, r)
 		return

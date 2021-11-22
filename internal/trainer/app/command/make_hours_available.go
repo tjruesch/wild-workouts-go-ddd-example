@@ -20,10 +20,10 @@ func NewMakeHoursAvailableHandler(hourRepo hour.Repository) MakeHoursAvailableHa
 	return MakeHoursAvailableHandler{hourRepo: hourRepo}
 }
 
-func (c MakeHoursAvailableHandler) Handle(ctx context.Context, hours []time.Time) error {
-	for _, hourToUpdate := range hours {
+func (c MakeHoursAvailableHandler) Handle(ctx context.Context, hours []time.Time, topics []string, tags []string) error {
+	for i, hourToUpdate := range hours {
 		if err := c.hourRepo.UpdateHour(ctx, hourToUpdate, func(h *hour.Hour) (*hour.Hour, error) {
-			if err := h.MakeAvailable(); err != nil {
+			if err := h.MakeAvailable(topics[i], tags[i]); err != nil {
 				return nil, err
 			}
 			return h, nil

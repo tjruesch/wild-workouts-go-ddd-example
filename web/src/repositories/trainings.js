@@ -43,13 +43,17 @@ export function getAvailableDates(callback) {
 }
 
 export function setHourAvailability(updates, availability, callback, errorCallback) {
-    let hourUpdates = []
+    let hourDates = []
+    let hourTopics = []
+    let hourTags = []
 
     updates.forEach(function (val) {
-        hourUpdates.push(new Date(val[0] + 'T' + val[1]))
+        hourDates.push(new Date(val[0] + 'T' + val[1]))
+        hourTopics.push(val[2])
+        hourTags.push(val[3])
     })
 
-    let hourUpdate = new HourUpdate(hourUpdates)
+    let hourUpdate = new HourUpdate(hourDates, hourTopics, hourTags)
 
     if (availability) {
         trainerAPI.makeHourAvailable(hourUpdate, (error) => {

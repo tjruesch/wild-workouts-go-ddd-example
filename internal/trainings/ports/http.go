@@ -192,6 +192,7 @@ func appTrainingsToResponse(appTrainings []query.Training) []Training {
 			MoveProposedBy:     tm.MoveProposedBy,
 			MoveRequiresAccept: tm.CanBeCancelled,
 			Notes:              tm.Notes,
+			Topic:              tm.Topic,
 			ProposedTime:       tm.ProposedTime,
 			Time:               tm.Time,
 			User:               tm.User,

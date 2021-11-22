@@ -22,6 +22,8 @@ type TrainingModel struct {
 	Time  time.Time `firestore:"Time"`
 	Notes string    `firestore:"Notes"`
 
+	Topic string `firestore:"Topic"`
+
 	ProposedTime   *time.Time `firestore:"ProposedTime"`
 	MoveProposedBy *string    `firestore:"MoveProposedBy"`
 
@@ -122,6 +124,7 @@ func (r TrainingsFirestoreRepository) marshalTraining(tr *training.Training) Tra
 		Time:     tr.Time(),
 		Notes:    tr.Notes(),
 		Canceled: tr.IsCanceled(),
+		Topic:    tr.Topic(),
 	}
 
 	if tr.IsRescheduleProposed() {
@@ -161,6 +164,7 @@ func (r TrainingsFirestoreRepository) unmarshalTraining(doc *firestore.DocumentS
 		trainingModel.User,
 		trainingModel.Time,
 		trainingModel.Notes,
+		trainingModel.Topic,
 		trainingModel.Canceled,
 		proposedTime,
 		moveProposedBy,

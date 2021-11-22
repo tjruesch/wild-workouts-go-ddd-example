@@ -16,13 +16,15 @@ type Training struct {
 	time  time.Time
 	notes string
 
+	topic string
+
 	proposedNewTime time.Time
 	moveProposedBy  UserType
 
 	canceled bool
 }
 
-func NewTraining(uuid string, userUUID string, userName string, trainingTime time.Time) (*Training, error) {
+func NewTraining(uuid string, userUUID string, userName string, trainingTime time.Time, topic string) (*Training, error) {
 	if uuid == "" {
 		return nil, errors.New("empty training uuid")
 	}
@@ -35,11 +37,15 @@ func NewTraining(uuid string, userUUID string, userName string, trainingTime tim
 	if trainingTime.IsZero() {
 		return nil, errors.New("zero training time")
 	}
+	if topic == "" {
+		return nil, errors.New("empty topic")
+	}
 
 	return &Training{
 		uuid:     uuid,
 		userUUID: userUUID,
 		userName: userName,
+		topic:    topic,
 		time:     trainingTime,
 	}, nil
 }
@@ -54,11 +60,12 @@ func UnmarshalTrainingFromDatabase(
 	userName string,
 	trainingTime time.Time,
 	notes string,
+	topic string,
 	canceled bool,
 	proposedNewTime time.Time,
 	moveProposedBy UserType,
 ) (*Training, error) {
-	tr, err := NewTraining(uuid, userUUID, userName, trainingTime)
+	tr, err := NewTraining(uuid, userUUID, userName, trainingTime, topic)
 	if err != nil {
 		return nil, err
 	}
@@ -85,6 +92,10 @@ func (t Training) UserName() string {
 
 func (t Training) Time() time.Time {
 	return t.time
+}
+
+func (t Training) Topic() string {
+	return t.topic
 }
 
 var ErrNoteTooLong = commonerrors.NewIncorrectInputError("Note too long", "note-too-long")
