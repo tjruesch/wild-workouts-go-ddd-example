@@ -84,12 +84,18 @@ func createFirebaseUsers() ([]string, error) {
 	}{
 		{
 
-			Email:       "trainer@threedots.tech",
+			Email:       "trainer@getranet.de",
 			DisplayName: "Trainer",
 			Role:        "trainer",
 		},
 		{
-			Email:       "attendee@threedots.tech",
+
+			Email:       "trainer2@getranet.de",
+			DisplayName: "Trainer",
+			Role:        "trainer",
+		},
+		{
+			Email:       "attendee@getranet.de",
 			DisplayName: "Mariusz Pudzianowski",
 			Role:        "attendee",
 		},

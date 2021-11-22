@@ -47,7 +47,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <label for="notes">Notes <small>(visible for trainer)</small></label>
                         <textarea class="form-control" id="notes" rows="3" v-model="trainingData.notes" maxlength="1000"></textarea>
