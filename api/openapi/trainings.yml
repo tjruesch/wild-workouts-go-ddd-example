@@ -178,7 +178,7 @@ components:
   schemas:
     Training:
       type: object
-      required: [uuid, user, userUuid, notes, time, canBeCancelled, moveRequiresAccept]
+      required: [uuid, user, userUuid, notes, topic, time, canBeCancelled, moveRequiresAccept]
       properties:
         uuid:
           type: string
@@ -192,6 +192,8 @@ components:
         notes:
           type: string
           example: "let's do leg day!"
+        topic:
+          type: string
         time:
           type: string
           format: date-time
