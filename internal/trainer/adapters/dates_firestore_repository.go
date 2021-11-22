@@ -22,6 +22,8 @@ type HourModel struct {
 	Available            bool      `firestore:"Available"`
 	HasTrainingScheduled bool      `firestore:"HasTrainingScheduled"`
 	Hour                 time.Time `firestore:"Hour"`
+	Topic                string    `firestore:"Topic"`
+	Tags                 string    `firestore:"Tags"`
 }
 
 type DatesFirestoreRepository struct {
