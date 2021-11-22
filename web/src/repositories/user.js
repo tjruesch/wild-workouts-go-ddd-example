@@ -64,17 +64,17 @@ export function getTestUsers() {
     return [
         {
             'uuid': '1',
-            'login': 'trainer@threedots.tech',
+            'login': 'trainer@getranet.de',
             'password': '123456',
             'role': 'trainer',
-            'name': 'Trainer',
+            'name': 'Test Trainer',
         },
         {
             'uuid': '2',
-            'login': 'attendee@threedots.tech',
+            'login': 'attendee@getranet.de',
             'password': '123456',
             'role': 'attendee',
-            'name': 'Mock Arnie',
+            'name': 'Test User',
         },
     ]
 }

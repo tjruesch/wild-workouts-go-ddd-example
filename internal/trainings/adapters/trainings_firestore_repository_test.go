@@ -162,7 +162,6 @@ func TestTrainingsFirestoreRepository_AllTrainings(t *testing.T) {
 	// AllTrainings returns all documents, because of that we need to do exception and do DB cleanup
 	// In general, I recommend to do it before test. In that way you are sure that cleanup is done.
 	// Thanks to that tests are more stable.
-	// More about why it is important you can find in https://threedots.tech/post/database-integration-testing/
 	err := repo.RemoveAllTrainings(context.Background())
 	require.NoError(t, err)
 

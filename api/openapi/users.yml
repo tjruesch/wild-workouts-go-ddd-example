@@ -1,11 +1,11 @@
 openapi: "3.0.0"
 info:
   version: 1.0.0
-  title: Wild Workouts users
+  title: CBN Training users
   description: TODO
   contact:
-    name: Three Dots Labs
-    url: https://threedots.tech/
+    name: GTN Group AG
+    url: https://getranet.de/
 servers:
   - url: https://{hostname}/api
     variables:

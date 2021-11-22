@@ -99,11 +99,6 @@ func createFirebaseUsers() ([]string, error) {
 			DisplayName: "Mariusz Pudzianowski",
 			Role:        "attendee",
 		},
-		{
-			Email:       "attendee2@threedots.tech",
-			DisplayName: "Arnold Schwarzenegger",
-			Role:        "attendee",
-		},
 	}
 
 	for _, user := range usersToCreate {
