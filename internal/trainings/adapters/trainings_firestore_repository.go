@@ -247,6 +247,7 @@ func (r TrainingsFirestoreRepository) trainingModelsToQuery(iter *firestore.Docu
 			UserUUID:       tr.UserUUID(),
 			User:           tr.UserName(),
 			Time:           tr.Time(),
+			Topic:          tr.Topic(),
 			Notes:          tr.Notes(),
 			CanBeCancelled: tr.CanBeCanceledForFree(),
 		}
