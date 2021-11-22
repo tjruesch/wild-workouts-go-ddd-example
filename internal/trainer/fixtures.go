@@ -2,10 +2,8 @@ package main
 
 import (
 	"context"
-	"math/rand"
 	"time"
 
-	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/truesch/wild-workouts-go-ddd-example/internal/common/client"
 	"github.com/truesch/wild-workouts-go-ddd-example/internal/trainer/app"
@@ -25,7 +23,7 @@ func loadFixtures(app app.Application) {
 		return
 	}
 
-	logrus.WithField("after", time.Now().Sub(start)).Debug("Trainer service is available")
+	logrus.WithField("after", time.Since(start)).Debug("Trainer service is available")
 
 	if !canLoadFixtures(app, ctx) {
 		logrus.Debug("Trainer fixtures are already loaded")
@@ -42,12 +40,12 @@ func loadFixtures(app app.Application) {
 		time.Sleep(10 * time.Second)
 	}
 
-	logrus.WithField("after", time.Now().Sub(start)).Debug("Trainer fixtures loaded")
+	logrus.WithField("after", time.Since(start)).Debug("Trainer fixtures loaded")
 }
 
 func loadTrainerFixtures(ctx context.Context, application app.Application) error {
 	maxDate := time.Now().AddDate(0, 0, daysToSet)
-	localRand := rand.New(rand.NewSource(3))
+	// localRand := rand.New(rand.NewSource(3))
 
 	for date := time.Now(); date.Before(maxDate); date = date.AddDate(0, 0, 1) {
 		for hour := 12; hour <= 20; hour++ {
@@ -58,12 +56,12 @@ func loadTrainerFixtures(ctx context.Context, application app.Application) error
 				continue
 			}
 
-			if localRand.NormFloat64() > 0 {
-				err := application.Commands.MakeHoursAvailable.Handle(ctx, []time.Time{trainingTime})
-				if err != nil {
-					return errors.Wrap(err, "unable to update hour")
-				}
-			}
+			// if localRand.NormFloat64() > 0 {
+			// 	err := application.Commands.MakeHoursAvailable.Handle(ctx, []time.Time{trainingTime}, "Test Topic", "")
+			// 	if err != nil {
+			// 		return errors.Wrap(err, "unable to update hour")
+			// 	}
+			// }
 		}
 	}
 
